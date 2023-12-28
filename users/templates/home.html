@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Home </title>
+    <p>
+        This is home page
+    </p>
+    {% if user.is_authenticated %}
+        <a class="nav-item nav-link" href="{% url 'logout' %}">
+            Log out <i class="fas fa-sign-out-alt"></i>
+        </a>
+    {% else %}
+        <a class="nav-item nav-link" href="{% url 'login' %}">
+            Log in <i class="fas fa-sign-in-alt"></i>
+        </a>
+        <a class="nav-item nav-link" href="{% url 'signup' %}">
+            Sign up <i class="fas fa-user-plus"></i>
+        </a>
+    {% endif %}
+</head>
+<body>  
+</body>
+</html>
