@@ -31,14 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Products.apps.ProductsConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'Products',
-    'cart',
     'django.contrib.admin',
     # 'users.apps.ProductConfig',
     # 'users.apps.CategoryConfig',
@@ -126,12 +125,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 # STATIC_ROOT = ''
-STATIC_URL = 'Products/media/'
-MEDIA_ROOT = ''
-MEDIA_URL = 'media/'
+STATIC_URL = '/static/'
+MEDIA_ROOT = BASE_DIR
+MEDIA_URL = '/media/'
+STATIC_ROOT = ' '
+STATICFILES_URL = [
+    os.path.join(BASE_DIR / 'static')
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'uni_form'
 LOGIN_REDIRECT_URL = 'home'

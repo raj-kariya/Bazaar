@@ -1,32 +1,22 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+<!-- <header>
+    <link rel=”stylesheet” href="{{STATIC_URL}}  'css/style.css'">
+</header> -->
+
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<h1>Welcome To Our Food HomePage</h1>
+<li>No objects yet</li>
 
-  <h1>Welcome To Our Food HomePage</h1>
-  {% if user.is_authenticated %}
-  <div class = "product">
-    {% if object_list %}
-      {% for product in object_list %}
-      <div class="card-body p-4">
-        <div class="text-center">
-            <img src = "Products/media/{{ product.image }}">
-            <!-- Product name-->
-            <h5 class="fw-bolder">{{ product.name }}</h5>
-            <p>{{ product.description }}</p>
-            <!-- Product price-->
-            <span class="price">{{ product.name }}</span>
-        </div>
-      </div>
-      <!-- <div class = "product">
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <img src = "Products/media/{{ product.image }}" alt = "{{ product.name }}">
-        <p> Price: {{product.price}}</p> 
-      </div> -->
-      {% endfor %}
-      {% else %} 
-        <li>No objects yet.</li>
-    {% endif %}
-  </div>
-  {% endif %}
+<ul>
+    {% for p in object_list %}
+    <!--                                                                                                 same line ↓ -->
+    <li>
+        {{ p.name }} 
+        {{ p.description }}
+        <img src="{{MEDIA_URL}}{{ p.image.url}}"> 
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
