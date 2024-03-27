@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 import datetime
 import os
+from django.urls import reverse
 class Category(models.Model):
     """
     Category Model
@@ -34,6 +35,10 @@ class Product(models.Model):
     objects = models.Manager()
     def __str__(self):
         return str(self.name)
+    def get_absolute_url(self):
+        return reverse("mainapp:product", kwargs={
+            'slug': self.slug
+        })
     
 def get_filename(instance, filename):
     old_name = filename

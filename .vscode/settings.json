@@ -1,0 +1,6 @@
+{
+    "pylint.args": [
+        "load-plugins=pylint_django"
+    ],
+    "python.analysis.autoImportCompletions": true,
+}
